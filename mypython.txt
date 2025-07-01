@@ -1,0 +1,727 @@
+print(f'Hi, {my_name}')
+
+Test of emptiness of strings, lists, dictionaries, etc., should not use len, but prefer direct boolean evaluation. 
+
+if a: # evaluates to True
+...     print("the list is not empty!")
+
+The str(), int(), and float() Functions
+
+These functions allow you to change the type of variable. For example, you can transform from an integer or float to a string:
+
+Python built-in Functions
+Function	Description
+abs()	Return the absolute value of a number.
+aiter()	Return an asynchronous iterator for an asynchronous iterable.
+all()	Return True if all elements of the iterable are true.
+any()	Return True if any element of the iterable is true.
+ascii()	Return a string with a printable representation of an object.
+bin()	Convert an integer number to a binary string.
+bool()	Return a Boolean value.
+breakpoint()	Drops you into the debugger at the call site.
+bytearray()	Return a new array of bytes.
+bytes()	Return a new “bytes” object.
+callable()	Return True if the object argument is callable, False if not.
+chr()	Return the string representing a character.
+classmethod()	Transform a method into a class method.
+compile()	Compile the source into a code or AST object.
+complex()	Return a complex number with the value real + imag*1j.
+delattr()	Deletes the named attribute, provided the object allows it.
+dict()	Create a new dictionary.
+dir()	Return the list of names in the current local scope.
+divmod()	Return a pair of numbers consisting of their quotient and remainder.
+enumerate()	Return an enumerate object.
+eval()	Evaluates and executes an expression.
+exec()	This function supports dynamic execution of Python code.
+filter()	Construct an iterator from an iterable and returns true.
+float()	Return a floating point number from a number or string.
+format()	Convert a value to a “formatted” representation.
+frozenset()	Return a new frozenset object.
+getattr()	Return the value of the named attribute of object.
+globals()	Return the dictionary implementing the current module namespace.
+hasattr()	Return True if the object has the named attribute.
+hash()	Return the hash value of the object.
+help()	Invoke the built-in help system.
+hex()	Convert an integer number to a lowercase hexadecimal string.
+id()	Return the “identity” of an object.
+input()	This function takes an input and converts it into a string.
+int()	Return an integer object constructed from a number or string.
+isinstance()	Return True if the object argument is an instance of an object.
+issubclass()	Return True if class is a subclass of classinfo.
+iter()	Return an iterator object.
+len()	Return the length (the number of items) of an object.
+list()	Rather than being a function, list is a mutable sequence type.
+locals()	Update and return a dictionary with the current local symbol table.
+map()	Return an iterator that applies function to every item of iterable.
+max()	Return the largest item in an iterable.
+min()	Return the smallest item in an iterable.
+next()	Retrieve the next item from the iterator.
+object()	Return a new featureless object.
+oct()	Convert an integer number to an octal string.
+open()	Open file and return a corresponding file object.
+ord()	Return an integer representing the Unicode code point of a character.
+pow()	Return base to the power exp.
+print()	Print objects to the text stream file.
+property()	Return a property attribute.
+repr()	Return a string containing a printable representation of an object.
+reversed()	Return a reverse iterator.
+round()	Return number rounded to ndigits precision after the decimal point.
+set()	Return a new set object.
+setattr()	This is the counterpart of getattr().
+slice()	Return a sliced object representing a set of indices.
+sorted()	Return a new sorted list from the items in iterable.
+staticmethod()	Transform a method into a static method.
+str()	Return a str version of object.
+sum()	Sums start and the items of an iterable.
+super()	Return a proxy object that delegates method calls to a parent or sibling.
+tuple()	Rather than being a function, is actually an immutable sequence type.
+type()	Return the type of an object.
+vars()	Return the dict attribute for any other object with a dict attribute.
+zip()	Iterate over several iterables in parallel.
+import()	This function is invoked by the import statement.
+
+---------------
+
+>>> if name == 'Debora':
+...    print('Hi Debora!')
+... elif name == 'George':
+...    print('Hi George!')
+... else:
+...    print('Who are you?')
+
+
+<expression1> if <condition> else <expression2>
+ print('kid' if age < 18 else 'adult')
+ 
+ 
+ 
+  response_code = 201
+>>> match response_code:
+...     case 200:
+...         print("OK")
+...     case 201:
+...         print("Created")
+...     case 300:
+...         print("Multiple Choices")
+
+...     case 400 | 401:
+...         print("Bad Request")
+ case _:
+...         print("Invalid Code")
+
+default value
+
+
+Matching Builtin Classes
+
+>>> response_code = "300"
+>>> match response_code:
+...     case int():
+...             print('Code is a number')
+...     case str():
+...             print('Code is a string')
+
+
+Guarding Match-Case Statements
+
+>>> response_code = 300
+>>> match response_code:
+...     case int():
+...             if response_code > 99 and response_code < 500:
+...                 print('Code is a valid number')
+...     case _:
+...             print('Code is an invalid number')
+...
+# Code is a valid number
+
+
+
+>>> while spam < 5:
+...     print('Hello, world.')
+...     spam = spam + 1
+
+
+If the execution reaches a break statement, it immediately exits the while loop’s 
+When the program execution reaches a continue statement, the program execution immediately jumps back to the start of the loop.
+
+>>> while True:
+...     name = input('Who are you? ')
+...     if name != 'Joe':
+...         continue
+...     password = input('Password? (It is a fish.): ')
+...     if password == 'swordfish':
+...         break
+
+
+
+The for loop iterates over a list, tuple, dictionary, set or string:
+
+>>> pets = ['Bella', 'Milo', 'Loki']
+>>> for pet in pets:
+...     print(pet)
+
+The range() function returns a sequence of numbers. It starts from 0, increments by 1, and stops before a specified number:
+
+>>> for i in range(5):
+...     print(f'Will stop at 5! or 4? ({i})')
+
+
+
+The range() function can also modify its 3 defaults arguments. The first two will be the start and stop values, and the third will be the step argument. The step is the amount that the variable is increased by after each iteration.
+
+# range(start, stop, step)
+>>> for i in range(0, 10, 2):
+
+Ending a Program with sys.exit()
+
+exit() function allows exiting Python.
+>>> import sys
+
+>>> while True:
+...     feedback = input('Type exit to exit: ')
+...     if feedback == 'exit':
+...         print(f'You typed {feedback}.')
+...         sys.exit()
+
+
+>>> def say_hello(name):
+...    print(f'Hello {name}')
+
+
+>>> def sum_two_numbers(number_1, number_2):
+...    return number_1 + number_2
+...
+>>> result = sum_two_numbers(7, 8)
+
+
+
+Local and Global Scope
+
+    Code in the global scope cannot use any local variables.
+
+    However, a local scope can access global variables.
+
+    Code in a function’s local scope cannot use variables in any other local scope.
+
+    You can use the same name for different variables if they are in different scopes. That is, there can be a local variable named spam and a global variable also named spam.
+	
+	
+	
+The global Statement
+
+If you need to modify a global variable from within a function, use the global statement:
+
+>>> def spam():
+...     global eggs
+...     eggs = 'spam'
+...-------------------------
+
+>>> eggs = 'global'
+>>> spam()
+>>> print(eggs)
+
+
+
+Lambda Functions
+
+In Python, a lambda function is a single-line, anonymous function, which can have any number of arguments, but it can only have one expression.
+ lambda is a minimal function definition that can be used inside an expression. Unlike FunctionDef, body holds a single node.
+
+Single line expression
+Lambda functions can only evaluate an expression, like a single line of code. 
+
+
+>>> def add(x, y):
+...     return x + y
+...
+>>> add(5, 3)
+# 8
+
+Is equivalent to the lambda function:
+
+>>> add = lambda x, y: x + y
+>>> add(5, 3)
+# 8
+
+-------------------------------------
+Lists
+
+Lists are one of the 4 data types in Python used to store collections of data.
+
+['John', 'Peter', 'Debora', 'Charles']
+
+Getting values with indexes
+
+>>> furniture = ['table', 'chair', 'rack', 'shelf']
+
+>>> furniture[0]
+
+furniture[0:4]
+# ['table', 'chair', 'rack', 'shelf']
+
+
+
+>>> spam2 = spam[:]
+# ['cat', 'bat', 'rat', 'elephant']
+
+>>> spam.append('dog')
+
+len(furniture)
+
+Concatenation and Replication
+
+>>> [1, 2, 3] + ['A', 'B', 'C']
+
+for item in furniture:
+...     print(item)
+
+Getting the index in a loop with enumerate()
+
+>>> furniture = ['table', 'chair', 'rack', 'shelf']
+
+>>> for index, item in enumerate(furniture):
+...     print(f'index: {index} - item: {item}')
+# index: 0 - item: table
+# index: 1 - item: chair
+
+Loop in Multiple Lists with zip()
+
+>>> furniture = ['table', 'chair', 'rack', 'shelf']
+>>> price = [100, 50, 80, 40]
+
+>>> for item, amount in zip(furniture, price):
+...     print(f'The {item} costs ${amount}')
+# The table costs $100
+# The chair costs $50
+
+
+>>> 'rack' in ['table', 'chair', 'rack', 'shelf']
+# True
+
+>>> 'bed' in ['table', 'chair', 'rack', 'shelf']
+# False
+
+>>> 'bed' not in furniture
+# True
+
+The multiple assignment trick can also be used to swap the values in two variables:
+
+>>> a, b = 'table', 'chair'
+>>> a, b = b, a
+>>> print(a)
+
+
+
+>>> furniture.index('chair')
+# 1
+
+>>> furniture.append('bed')
+
+
+insert()
+
+insert adds an element to a list at a given position:
+
+>>> furniture = ['table', 'chair', 'rack', 'shelf']
+>>> furniture.insert(1, 'bed')
+
+
+del removes an item using the index:
+
+>>> furniture = ['table', 'chair', 'rack', 'shelf']
+>>> del furniture[2]
+
+
+remove()
+
+remove removes an item with using actual value of it:
+
+>>> furniture = ['table', 'chair', 'rack', 'shelf']
+>>> furniture.remove('chair')
+
+
+pop()
+
+By default, pop will remove and return the last item of the list. 
+
+
+-------------------------------------------------------------------------
+
+Tuples vs Lists
+
+The key difference between tuples and lists is that, while tuples are immutable objects, lists are mutable. This means that tuples cannot be changed while the lists can be modified. Tuples are more memory efficient than the lists.
+
+>>> furniture = ('table', 'chair', 'rack', 'shelf')
+
+>>> furniture[0]
+# 'table'
+
+
+
+Converting between list() and tuple()
+
+>>> tuple(['cat', 'dog', 5])
+# ('cat', 'dog', 5)
+
+>>> list(('cat', 'dog', 5))
+# ['cat', 'dog', 5]
+
+>>> list('hello')
+# ['h', 'e', 'l', 'l', 'o']
+
+
+-----------------------------------------------------------------------
+List[] of elements 
+Tupule() - like list but imutable
+Dictionary{k:v, k:v, k:v}
+
+
+
+In Python, a dictionary is an ordered (from Python > 3.7) collection of key: value pairs.
+
+From the Python 3 documentation
+
+The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is also possible to delete a key:value pair with del.
+
+Example Dictionary:
+
+my_cat = {
+    'size': 'fat',
+    'color': 'gray',
+    'disposition': 'loud'
+}
+
+add an element k:value
+Get value using subscript operator []
+>>> my_cat['age_years'] = 2
+
+
+The values() method gets the values of the dictionary:
+
+>>> pet = {'color': 'red', 'age': 42}
+>>> for value in pet.values():
+...     print(value)
+
+keys()
+
+The keys() method gets the keys of the dictionary:
+
+
+The items() method gets the items of a dictionary and returns them as a Tuple:
+
+>>> pet = {'color': 'red', 'age': 42}
+>>> for item in pet.items():
+...     print(item)
+...
+# ('color', 'red')
+
+
+
+get()
+
+The get() method returns the value of an item with the given key. If the key doesn’t exist, it returns None:
+
+>>> wife = {'name': 'Rose', 'age': 33}
+
+>>> f'My wife name is {wife.get("name")}'
+
+
+Adding items with setdefault()
+
+It’s possible to add an item to a dictionary in this way:
+
+>>> wife = {'name': 'Rose', 'age': 33}
+>>> if 'has_hair' not in wife:
+...     wife['has_hair'] = True
+
+>>> wife.setdefault('has_hair', True)
+
+The pop() method removes and returns an item based on a given key.
+>>> wife.pop('age')
+
+The popitem() method removes the last item in a dictionary and returns it.
+>>> wife = {'name': 'Rose', 'age': 33, 'hair': 'brown'}
+>>> wife.popitem()
+
+
+The del() method removes an item based on a given key.
+
+>>> wife = {'name': 'Rose', 'age': 33, 'hair': 'brown'}
+>>> del wife['age']
+
+
+The clear() method removes all the items in a dictionary.
+>>> wife.clear()
+
+
+-------------------
+
+Checking keys in a Dictionary
+
+>>> person = {'name': 'Rose', 'age': 33}
+
+>>> 'name' in person.keys()
+# True
+
+
+>>> 'skin' in person # You can omit keys()
+# False
+
+
+Checking values in a Dictionary
+
+>>>  person = {'name': 'Rose', 'age': 33}
+
+>>> 'Rose' in person.values()
+# True
+
+------------------------------------------------------------------------
+Sets  {}
+Unordered collections of unique elements And as an unordered data type, they can’t be indexed.
+
+Initializing a set
+
+There are two ways to create sets: using curly braces {} and the built-in function set()
+
+***  Empty Sets
+When creating set, be sure to not use empty curly braces {} or you will get an empty dictionary instead. 
+
+
+
+>>> s = {1, 2, 3}
+>>> s[0]
+# Traceback (most recent call last):
+
+A set automatically removes all the duplicate values.
+
+>>> s = {1, 2, 3, 2, 3, 4}
+>>> s
+# {1, 2, 3, 4}
+
+
+Using the add() method we can add a single element to the set.
+And with update(), multiple ones:
+set remove and discard
+
+Both methods will remove an element from the set, but remove() will raise a key error if the value doesn’t exist.
+union() or | will create a new set with all the elements from the sets provided.
+s1.union(s2)
+
+set difference
+difference() or - will return only the elements that are unique to the first set (invoked set).
+
+------------------------------------------------------------------------
+
+
+>>> names = ['Charles', 'Susan', 'Patrick', 'George', 'Carol']
+
+>>> new_list = []
+>>> for n in names:
+...     if n.startswith('C'):
+...         new_list.append(n)
+...
+>>> print(new_list)
+
+
+----------------------------------------
+Raw strings
+
+A raw string entirely ignores all escape characters and prints any backslash that appears in the string.
+
+>>> print(r"Hello there!\nHow are you?\nI\'m doing fine.")
+
+Multiline Strings
+
+>>> print(
+... """Dear Alice,
+...
+... Eve's cat has
+
+... Sincerely,
+... Bob"""
+... )
+
+
+Indexing and Slicing strings
+
+H   e   l   l   o       w   o   r   l   d    !
+0   1   2   3   4   5   6   7   8   9   10   11
+
+Indexing
+
+>>> spam = 'Hello world!'
+
+>>> spam[0]
+# 'H'
+
+>>> spam = 'Hello world!'
+
+>>> spam[0:5]
+# 'Hello'
+
+The in and not in operators
+
+>>> 'Hello' in 'Hello World'
+# True
+
+>>> 'cats' not in 'cats and dogs'
+# False
+
+
+
+upper(), lower() and title()
+
+
+
+startswith() and endswith()
+
+>>> 'Hello world!'.startswith('Hello')
+# True
+
+
+The join() method takes all the items in an iterable, like a list, dictionary, tuple or set, and joins them into a string. 
+
+
+split()
+
+The split() method splits a string into a list. By default, it will use whitespace to separate the items, but you can also set another character of choice:
+
+>>> 'My name is Simon'.split()
+# ['My', 'name', 'is', 'Simon']
+
+Removing whitespace with strip(), rstrip(), and lstrip()
+
+>>> spam = '    Hello World     '
+>>> spam.strip()
+# 'Hello World'
+
+
+The Count Method
+
+Counts the number of occurrences of a given character or substring in the string it is applied to. Can be optionally provided start and end index.
+
+>>> sentence = 'one sheep two sheep three sheep four'
+>>> sentence.count('sheep')
+# 3
+
+
+
+>>> text = "Hello, world!"
+>>> text.replace("world", "planet")
+# 'Hello, planet!'
+
+
+
+The formatting operations described here (% operator) exhibit a variety of quirks that lead to a number of common errors [...]. 
+
+>>> name = 'Pete'
+>>> 'Hello %s' % name
+# "Hello Pete"
+
+
+We can use the %d format specifier to convert an int value to a string:
+
+>>> num = 5
+>>> 'I have %d apples' % num
+# "I have 5 apples"
+
+
+>>> name = 'John'
+>>> age = 20
+
+>>> "Hello I'm {}, my age is {}".format(name, age)
+# "Hello I'm John, my age is 20"
+>>> name = 'Elizabeth'
+>>> f'Hello {name}!'
+# 'Hello Elizabeth!'
+
+
+The = specifier
+
+This will print the expression and its value:
+
+>>> from datetime import datetime
+>>> now = datetime.now().strftime("%b/%d/%Y - %H:%M:%S")
+>>> f'date and time: {now=}'
+# "date and time: now='Nov/14/2022 - 20:50:01'"
+
+
+-----------------------------------------------------------------------------
+
+Regular expressions
+
+A regular expression (shortened as regex [...]) is a sequence of characters that specifies a search pattern in text. [...] used by string-searching algorithms for "find" or "find and replace" operations on strings, or for input validation.
+
+    Import the regex module with import re.
+    Create a Regex object with the re.compile() function. (Remember to use a raw string.)
+    Pass the string you want to search into the Regex object’s search() method. This returns a Match object.
+    Call the Match object’s group() method to return a string of the actual matched text.
+	
+	
+	
+	
+	Regex symbols
+Symbol	Matches
+?	zero or one of the preceding group.
+*	zero or more of the preceding group.
++	one or more of the preceding group.
+{n}	exactly n of the preceding group.
+{n,}	n or more of the preceding group.
+{,m}	0 to m of the preceding group.
+{n,m}	at least n and at most m of the preceding p.
+{n,m}? or *? or +?	performs a non-greedy match of the preceding p.
+^spam	means the string must begin with spam.
+spam$	means the string must end with spam.
+.	any character, except newline characters.
+\d, \w, and \s	a digit, word, or space character, respectively.
+\D, \W, and \S	anything except a digit, word, or space, respectively.
+[abc]	any character between the brackets (such as a, b, ).
+[^abc]	any character that isn’t between the brackets.
+
+
+
+
+Matching regex objects
+
+>>> phone_num_regex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+
+>>> mo = phone_num_regex.search('My number is 415-555-4242.')
+
+>>> print(f'Phone number found: {mo.group()}')
+# Phone number found: 415-555-4242
+
+
+
+Grouping with parentheses
+
+>>> phone_num_regex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+>>> mo = phone_num_regex.search('My number is 415-555-4242.')
+
+>>> mo.group(1)
+# '415'
+
+>>> mo.group(2)
+# '555-4242'
+
+>>> mo.group(0)
+# '415-555-4242'
+
+>>> mo.group()
+# '415-555-4242'
+
+To retrieve all the groups at once use the groups() method:
+
+
+Multiple groups with Pipe
+
+You can use the | character anywhere you want to match one of many expressions.
+
+>>> hero_regex = re.compile (r'Batman|Tina Fey')
+
+>>> mo1 = hero_regex.search('Batman and Tina Fey.')
+>>> mo1.group()
+# 'Batman'
+
+>>> mo2 = hero_regex.search('Tina Fey and Batman.')
+>>> mo2.group()
+# 'Tina Fey'
