@@ -1,0 +1,131 @@
+An ad hoc task can harness the power of Ansible and SCP to transfer many files to multiple machines in parallel. To transfer a file directly to all servers in the [atlanta] group:
+
+$ ansible [host-pattern] -m [module] -a "[module options]"
+-----------------------------------------------------------
+
+if -m not specified, The default module for the ansible command-line utility is the ansible.builtin.command module. 
+
+$ ansible atlanta -a "/sbin/reboot"
+$ ansible atlanta -a "/sbin/reboot" -f 10             (-f , how many parallel forks)
+
+$ ansible atlanta -m ansible.builtin.copy -a "src=/etc/hosts dest=/tmp/hosts"
+
+$ ansible raleigh -m ansible.builtin.shell -a 'echo $TERM'
+
+
+
+$ ansible webservers -m ansible.builtin.file -a "dest=/path/to/c mode=755 owner=mdehaan group=mdehaan state=directory"
+As well as delete directories (recursively) and delete files:
+$ ansible webservers -m ansible.builtin.file -a "dest=/path/to/c state=absent"
+
+
+state is used to create or delete etc
+
+
+To ensure a package is installed without updating it:
+$ ansible webservers -m ansible.builtin.yum -a "name=acme state=present"
+
+To ensure a package is at the latest version:
+$ ansible webservers -m ansible.builtin.yum -a "name=acme state=latest"
+$ ansible webservers -m ansible.builtin.yum -a "name=acme-1.5 state=present"
+
+To ensure a package is not installed:
+$ ansible webservers -m ansible.builtin.yum -a "name=acme state=absent"
+
+
+
+$ ansible webservers -m ansible.builtin.service -a "name=httpd state=started"
+$ ansible webservers -m ansible.builtin.service -a "name=httpd state=restarted"
+$ ansible webservers -m ansible.builtin.service -a "name=httpd state=stopped"
+
+
+
+Facts represent discovered variables about a system. You can use facts to implement conditional execution of tasks but also just to get ad hoc information about your systems. To see all facts:
+$ ansible all -m ansible.builtin.setup
+
+
+
+Check only (Do Not Run)
+$  ansible all -m copy -a "content=foo dest=/root/bar.txt" -C
+
+
+
+---------------------------
+
+
+
+Files
+
+/etc/ansible/hosts – Default inventory file
+
+/etc/ansible/ansible.cfg – Config file, used if present
+
+~/.ansible.cfg – User config file, overrides the default config if present
+
+
+---------
+ansible-doc -F
+ansible-doc -l
+ansible-doc -t module -l
+ansible-inventory -l
+
+ansible localhost -m ansible.builtin.apt -a "name=apache2 state=present" -b -K
+$ ansible-lint verify-apache.yml
+---------
+
+ansible-playbook
+
+ansible-playbook -i /path/to/my_inventory_file -u my_connection_user -k -f 3 -T 30 -t my_tag -M /path/to/my_modules -b -K my_playbook.yml
+
+Loads my_playbook.yml from the current working directory and:
+        -i - uses my_inventory_file in the path provided for inventory to match the pattern.
+        -u - connects over SSH as my_connection_user.
+        -k - asks for password which is then provided to SSH authentication.
+        -f - allocates 3 forks.
+        -T - sets a 30-second timeout.
+        -t - runs only tasks marked with the tag my_tag.
+        -M - loads local modules from /path/to/my/modules.
+        -b - executes with elevated privileges (uses become).
+        -K - prompts the user for the become password.
+
+------------------------------------------
+---
+- name: Update web servers
+  hosts: webservers
+  remote_user: root
+
+  tasks:
+  - name: Ensure apache is at the latest version
+    ansible.builtin.yum:
+      name: httpd
+      state: latest
+
+  - name: Write the apache config file
+    ansible.builtin.template:
+      src: /srv/httpd.j2
+      dest: /etc/httpd.conf
+
+- name: Update db servers
+  hosts: databases
+  remote_user: root
+
+  tasks:
+  - name: Ensure postgresql is at the latest version
+    ansible.builtin.yum:
+      name: postgresql
+      state: latest
+
+  - name: Ensure that postgresql is started
+    ansible.builtin.service:
+      name: postgresql
+      state: started
+
+-----------------------------------------------------
+
+ansible-playbook playbook.yml -f 10
+
+
+
+https://docs.ansible.com/ansible-core/devel/collections/index_module.html
+
+
