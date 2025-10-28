@@ -1,0 +1,5 @@
+•	Security Certification and Hardening: Security certification of clustered router Network Operating System (NOS), focusing on DoS Attacks mitigation, Transport Protocol Security and AAA integration.
+•	Advanced Security Tool Management: Managed, and maintained enterprise-level security tools, including SentinelOne (EDR/XDR) for threat response and Tenable for vulnerability management & Tanium for EMS.
+•	Security Development and Attack Simulation: Developed custom Python-based security test scripts to simulate and validate the network's resilience against complex attack vectors, specifically focusing on Man-in-the-Middle (MITM) attacks.
+•	Lab Operations (LabOps) Automation: Implemented robust infrastructure automation using Ansible to streamline Lab Operations, ensuring repeatable, secure environments and significantly reducing manual configuration and deployment time by 70%.
+•	Network Resilience and Stability Engineering: Contributed to core Network Element (NE) resilience and stability through controlled failure-injection testing, successfully identifying critical software stability flaws.
